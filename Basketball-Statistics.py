@@ -142,8 +142,7 @@ def myPlot(data,playerlist,xAxisName,yAxisName):
     mkr = {"KobeBryant":"s","JoeJohnson":"o","LeBronJames":"^","CarmeloAnthony":"D","DwightHoward":"s","ChrisBosh":"o","ChrisPaul":"^","KevinDurant":"D","DerrickRose":"s","DwayneWade":"o"}
     plt.figure(num=yAxisName, figsize=(18, 8), dpi=80, facecolor='w', edgecolor='k')
 
-    for name in playerlist:
-        plt.plot(data[Pdict[name]], c=Col[name],ls='--',marker=mkr[name],ms=7,label= name)
+    [plt.plot(data[Pdict[name]], c=Col[name],ls='--',marker=mkr[name],ms=7,label= name)for name in playerlist]
     plt.xlabel(xAxisName)
     plt.ylabel(yAxisName)
 
