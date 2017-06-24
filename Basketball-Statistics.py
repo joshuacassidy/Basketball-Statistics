@@ -140,7 +140,8 @@ def myPlot(data,playerlist,xAxisName,yAxisName):
     #Colours and markers for representing players on a graph
     Col = {"KobeBryant":'#000000',"JoeJohnson":'#db25bc',"LeBronJames":'#4086c4',"CarmeloAnthony":'#db254f',"DwightHoward":'#267731',"ChrisBosh":'#824d10',"ChrisPaul":"#ba3d21","KevinDurant":'#ba8420',"DerrickRose":'#b7aa1b',"DwayneWade":'#4fa30e'}
     mkr = {"KobeBryant":"s","JoeJohnson":"o","LeBronJames":"^","CarmeloAnthony":"D","DwightHoward":"s","ChrisBosh":"o","ChrisPaul":"^","KevinDurant":"D","DerrickRose":"s","DwayneWade":"o"}
-    plt.figure( figsize=(18, 8), dpi=80, facecolor='w', edgecolor='k')
+    plt.figure(num=yAxisName, figsize=(18, 8), dpi=80, facecolor='w', edgecolor='k')
+
     for name in playerlist:
         plt.plot(data[Pdict[name]], c=Col[name],ls='--',marker=mkr[name],ms=7,label= name)
     plt.xlabel(xAxisName)
