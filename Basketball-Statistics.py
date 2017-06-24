@@ -140,10 +140,12 @@ def myPlot(data,playerlist,xAxisName,yAxisName):
     #Colours and markers for representing players on a graph
     Col = {"KobeBryant":'#000000',"JoeJohnson":'#db25bc',"LeBronJames":'#4086c4',"CarmeloAnthony":'#db254f',"DwightHoward":'#267731',"ChrisBosh":'#824d10',"ChrisPaul":"#ba3d21","KevinDurant":'#ba8420',"DerrickRose":'#b7aa1b',"DwayneWade":'#4fa30e'}
     mkr = {"KobeBryant":"s","JoeJohnson":"o","LeBronJames":"^","CarmeloAnthony":"D","DwightHoward":"s","ChrisBosh":"o","ChrisPaul":"^","KevinDurant":"D","DerrickRose":"s","DwayneWade":"o"}
+    plt.figure( figsize=(18, 8), dpi=80, facecolor='w', edgecolor='k')
     for name in playerlist:
         plt.plot(data[Pdict[name]], c=Col[name],ls='--',marker=mkr[name],ms=7,label= name)
     plt.xlabel(xAxisName)
     plt.ylabel(yAxisName)
+
     plt.legend(loc='upper left', bbox_to_anchor=(1,1))
     plt.xticks(list(range(0,10)),Seasons)
     plt.show()
@@ -160,9 +162,9 @@ def myPlot(data,playerlist,xAxisName,yAxisName):
 # -Amount of free throw attempts per game 
 # -Players Free Throw accuracy -Players Throw accuracy -Player points scored excluding free throws
 
-dict = {'Points': Points, 'Salary': Salary, 'Salery Per Game': Salary/Games,'Salery per Field Goal':Salary/FieldGoals,'Minutes Played By Player':MinutesPlayed, 'Points Scored By Player':Points, 'Points Scored Per Minute Played': Points/MinutesPlayed,'Field Goals Per Game':FieldGoals/Games, 'Field Goals Scored Per Attempt':FieldGoals/FieldGoalAttempts,'Field Goal Attempts Per Game':FieldGoalAttempts/Games,'Points Scored Per Game':Points/Games,'Field Goals Per Minutes Played':FieldGoals/MinutesPlayed,'Points Scored Per Field Goal':Points/FieldGoals,'Free Throws Scored':FreeThrows,'Free Throw Attempts':FreeThrowAttempts,'Free Throw Attempts Per Game':FreeThrowAttempts/Games,'Players Free Throw Accuracy':FreeThrows/FreeThrowAttempts,'Players Free Throw Accuracy':FieldGoals/FieldGoalAttempts,'Points Scored Excluding Free Throws':(Points-FreeThrows)/FieldGoals}
+graphDict = {'Points': Points, 'Salary': Salary, 'Salery Per Game': Salary/Games,'Salery per Field Goal':Salary/FieldGoals,'Minutes Played By Player':MinutesPlayed, 'Points Scored By Player':Points, 'Points Scored Per Minute Played': Points/MinutesPlayed,'Field Goals Per Game':FieldGoals/Games, 'Field Goals Scored Per Attempt':FieldGoals/FieldGoalAttempts,'Field Goal Attempts Per Game':FieldGoalAttempts/Games,'Points Scored Per Game':Points/Games,'Field Goals Per Minutes Played':FieldGoals/MinutesPlayed,'Points Scored Per Field Goal':Points/FieldGoals,'Free Throws Scored':FreeThrows,'Free Throw Attempts':FreeThrowAttempts,'Free Throw Attempts Per Game':FreeThrowAttempts/Games,'Players Free Throw Accuracy':FreeThrows/FreeThrowAttempts,'Players Free Throw Accuracy':FieldGoals/FieldGoalAttempts,'Points Scored Excluding Free Throws':(Points-FreeThrows)/FieldGoals}
 
-for key, value in dict.items():
+for key, value in graphDict.items():
     myPlot(value,Players,'Years',key)
 
 #Conclusions
