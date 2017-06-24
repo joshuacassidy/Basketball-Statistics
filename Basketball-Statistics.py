@@ -136,24 +136,34 @@ DwayneWade_FTA = [803,535,467,771,702,652,297,425,258,370]
 FreeThrowAttempts = np.array([KobeBryant_FTA, JoeJohnson_FTA, LeBronJames_FTA, CarmeloAnthony_FTA, DwightHoward_FTA, ChrisBosh_FTA, ChrisPaul_FTA, KevinDurant_FTA, DerrickRose_FTA, DwayneWade_FTA])
 del (KobeBryant_FTA, JoeJohnson_FTA, LeBronJames_FTA, CarmeloAnthony_FTA, DwightHoward_FTA, ChrisBosh_FTA, ChrisPaul_FTA, KevinDurant_FTA, DerrickRose_FTA, DwayneWade_FTA)
 
-def myPlot(data,playerlist):
+def myPlot(data,playerlist,xAxisName,yAxisName):
     #Colours and markers for representing players on a graph
     Col = {"KobeBryant":'#000000',"JoeJohnson":'#db25bc',"LeBronJames":'#4086c4',"CarmeloAnthony":'#db254f',"DwightHoward":'#267731',"ChrisBosh":'#824d10',"ChrisPaul":"#ba3d21","KevinDurant":'#ba8420',"DerrickRose":'#b7aa1b',"DwayneWade":'#4fa30e'}
     mkr = {"KobeBryant":"s","JoeJohnson":"o","LeBronJames":"^","CarmeloAnthony":"D","DwightHoward":"s","ChrisBosh":"o","ChrisPaul":"^","KevinDurant":"D","DerrickRose":"s","DwayneWade":"o"}
     for name in playerlist:
         plt.plot(data[Pdict[name]], c=Col[name],ls='--',marker=mkr[name],ms=7,label= name)
-
+    plt.xlabel(xAxisName)
+    plt.ylabel(yAxisName)
     plt.legend(loc='upper left', bbox_to_anchor=(1,1))
     plt.xticks(list(range(0,10)),Seasons)
     plt.show()
 
 #Dictionary Contains the Following Data: 
-# -Player Points Scored Overall per season -Salary of players per season, Average Salary of players per game and Salary per field goal -Minutes played  by players per season, Points Scored by players per season and Points scored per minute by Players -Goals Scored per Game by players, Average amout of field goals scored by players per an attempt, Average field goal attempts per game and average points scored per game. -Average amount of field goals scored per minute in a game by the players -Amount of points scored by players per field goal (can score 2 points or 3 points in basketball) -Amount of Free throws scored by players -Amount of field Throw Attempts per player -Amount of free throw attempts per game -Players Free Throw accuracy -Players Throw accuracy -Player points scored excluding free throws
+# -Player Points Scored Overall per season 
+# -Salary of players per season, Average Salary of players per game and Salary per field goal 
+# -Minutes played  by players per season, Points Scored by players per season and Points scored per minute by Players 
+# -Goals Scored per Game by players, Average amout of field goals scored by players per an attempt, Average field goal attempts per game and average points scored per game. 
+# -Average amount of field goals scored per minute in a game by the players 
+# -Amount of points scored by players per field goal (can score 2 points or 3 points in basketball) 
+# -Amount of Free throws scored by players 
+# -Amount of field Throw Attempts per player 
+# -Amount of free throw attempts per game 
+# -Players Free Throw accuracy -Players Throw accuracy -Player points scored excluding free throws
 
 dict = {'Points': Points, 'Salary': Salary, 'AverageSalPerGame': Salary/Games,'AverageSalperFieldGoal':Salary/FieldGoals,'MinutesPlayedByPlayerPerSeason':MinutesPlayed, 'PointsScoredByPlayerPerSeason':Points, 'AveragePointsScoredPerMinute': Points/MinutesPlayed,'GoalsScoredPerGameByPlayers':FieldGoals/Games, 'AverageAmountOfFieldGoalsScoredByPlayersPerAnAttempt':FieldGoals/FieldGoalAttempts,'AverageFieldGoalAttemptsPerGame':FieldGoalAttempts/Games,'AveragePointsScoredPerGame':Points/Games,'AverageFieldGoalsPerMinutesPlayed':FieldGoals/MinutesPlayed,'AmountOfPointsScoredByPlayersPerFieldGoal':Points/FieldGoals,'AmountOfFreeThrowsScoredByPlayers':FreeThrows,'AmountOfFreeThrowAttemptsPerPlayer':FreeThrowAttempts,'AmountOFFreeThrowAttemptsPerGame':FreeThrowAttempts/Games,'PlayersFreeThrowAccuracy':FreeThrows/FreeThrowAttempts,'PlayersThrowAccuracy':FieldGoals/FieldGoalAttempts,'PlayersPointsScoredExcludingFreeThrows':(Points-FreeThrows)/FieldGoals}
 
 for key, value in dict.items():
-    myPlot(value,Players)
+    myPlot(value,Players,'Years',key)
 
 #Conclusions
 # We can see that players preference for 2 or 3 points shots changing throughout their career, where most of the players experimented with these shots, the most drastic change in the shot style is Joe Johnson. The exception to this rule is Dwight he consistenly scores 2 point shots which explains his good accuracy and poor Free Throw Accuracy. You can see how players' preference for 2 or 3 point shots changes throughout their career. We can see that almost all players in this dataset experiment with their style throughout their careers. Perhaps, the most drastic change in style has been experienced by Joe Johnson.
