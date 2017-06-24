@@ -165,9 +165,7 @@ def myPlot(data,playerlist,xAxisName,yAxisName):
 
 graphDict = {'Points': Points, 'Salary': Salary, 'Salery Per Game': Salary/Games,'Salery per Field Goal':Salary/FieldGoals,'Minutes Played By Player':MinutesPlayed, 'Points Scored By Player':Points, 'Points Scored Per Minute Played': Points/MinutesPlayed,'Field Goals Per Game':FieldGoals/Games, 'Field Goals Scored Per Attempt':FieldGoals/FieldGoalAttempts,'Field Goal Attempts Per Game':FieldGoalAttempts/Games,'Points Scored Per Game':Points/Games,'Field Goals Per Minutes Played':FieldGoals/MinutesPlayed,'Points Scored Per Field Goal':Points/FieldGoals,'Free Throws Scored':FreeThrows,'Free Throw Attempts':FreeThrowAttempts,'Free Throw Attempts Per Game':FreeThrowAttempts/Games,'Players Free Throw Accuracy':FreeThrows/FreeThrowAttempts,'Players Free Throw Accuracy':FieldGoals/FieldGoalAttempts,'Points Scored Excluding Free Throws':(Points-FreeThrows)/FieldGoals}
 
-for key, value in graphDict.items():
-    myPlot(value,Players,'Years',key)
-
+[myPlot(value,Players,'Years',key) for key, value in graphDict.items()]
 #Conclusions
 # We can see that players preference for 2 or 3 points shots changing throughout their career, where most of the players experimented with these shots, the most drastic change in the shot style is Joe Johnson. The exception to this rule is Dwight he consistenly scores 2 point shots which explains his good accuracy and poor Free Throw Accuracy. You can see how players' preference for 2 or 3 point shots changes throughout their career. We can see that almost all players in this dataset experiment with their style throughout their careers. Perhaps, the most drastic change in style has been experienced by Joe Johnson.
 
